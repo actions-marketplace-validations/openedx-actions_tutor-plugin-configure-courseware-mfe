@@ -49,10 +49,10 @@ jobs:
           aws-ecr-uri: 123456789012.dkr.ecr.us-east-2.amazonaws.com/openedx_mfe:latest
 
       # This action.
-      - name: Disable LMS courseware micro front-end app
+      - name: Enable LMS courseware micro front-end app
         uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.1
         with:
-          enabled: 'false'
+          enabled: 'true'
 ```
 
 ## Usage to disable courseware MFE
