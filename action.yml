@@ -20,22 +20,22 @@ runs:
   using: "composite"
   steps:
     - name: install tutor-contrib-disable_courseware_mfe
-      if: ${{ github.event.inputs.enabled = 'false' }}
+      if: ${{ inputs.enabled == 'false' }}
       shell: bash
       run: pip install git+https://github.com/lpm0073/tutor-contrib-disable-courseware-mfe
 
     - name: Enable tutor-contrib-disable_courseware_mfe
-      if: ${{ github.event.inputs.enabled = 'false' }}
+      if: ${{ inputs.enabled == 'false' }}
       shell: bash
       run: tutor plugins enable disable_courseware_mfe
 
     - name: install tutor-contrib-enable-courseware-mfe
-      if: ${{ github.event.inputs.enabled = 'true' }}
+      if: ${{ inputs.enabled == 'true' }}
       shell: bash
       run: pip install git+https://github.com/lpm0073/tutor-contrib-enable-courseware-mfe
 
     - name: Enable tutor-contrib-enable-courseware-mfe
-      if: ${{ github.event.inputs.enabled = 'true' }}
+      if: ${{ inputs.enabled == 'true' }}
       shell: bash
       run: tutor plugins enable enable_courseware_mfe
 

@@ -50,7 +50,7 @@ jobs:
 
       # This action.
       - name: Enable LMS courseware micro front-end app
-        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.1
+        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.2
         with:
           enabled: 'true'
 ```
@@ -85,7 +85,7 @@ jobs:
 
       # This action.
       - name: Disable LMS courseware micro front-end app
-        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.1
+        uses: openedx-actions/tutor-plugin-configure-courseware-mfe@v0.0.2
         with:
           enabled: 'false'
 ```
