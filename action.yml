@@ -1,0 +1,44 @@
+#------------------------------------------------------------------------------
+# written by: mcdaniel
+# date: june-2022
+#
+# usage: installs and enables a tutor plugin that with either enable
+#        or disable the courseware micro front-end app functionality.
+#------------------------------------------------------------------------------
+name: Open edX Tutor k8s configure courseware MFE
+description: Github Action to enable or disable courseware MFE UI functionality
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  enabled:
+    description: 'true to enable Micro Front-end UIs false to disable. Defaults to false'
+    required: false
+    type: string
+    default: 'false'
+runs:
+  using: "composite"
+  steps:
+    - name: install tutor-contrib-disable_courseware_mfe
+      if: ${{ github.event.inputs.enabled = 'false' }}
+      shell: bash
+      run: pip install git+https://github.com/lpm0073/tutor-contrib-disable-courseware-mfe
+
+    - name: Enable tutor-contrib-disable_courseware_mfe
+      if: ${{ github.event.inputs.enabled = 'false' }}
+      shell: bash
+      run: tutor plugins enable disable_courseware_mfe
+
+    - name: install tutor-contrib-enable-courseware-mfe
+      if: ${{ github.event.inputs.enabled = 'true' }}
+      shell: bash
+      run: pip install git+https://github.com/lpm0073/tutor-contrib-enable-courseware-mfe
+
+    - name: Enable tutor-contrib-enable-courseware-mfe
+      if: ${{ github.event.inputs.enabled = 'true' }}
+      shell: bash
+      run: tutor plugins enable enable_courseware_mfe
+
+    - name: Save the tutor config
+      shell: bash
+      run: tutor config save
